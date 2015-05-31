@@ -1,0 +1,30 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/lc3b_types.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/register.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/mux4.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/plus2.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/signextend.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/gencc.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/MP3.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/pipeline_datapath.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/IF_ID_register.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/control_rom.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/ID_EX_register.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/regfile.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/cccomp.sv}
+
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/MP3_tb.sv}
+vlog -sv -work work +incdir+C:/Users/Abishek/Google\ Drive/MP3 {C:/Users/Abishek/Google Drive/MP3/magic_memory.sv}
+
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  MP3_tb
+
+add wave *
+view structure
+view signals
+run 200 ns

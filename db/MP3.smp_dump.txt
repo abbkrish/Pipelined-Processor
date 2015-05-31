@@ -1,0 +1,22 @@
+
+State Machine - |MP3|cache_hierarchy:CACHE_HIERARCHY|dcache:DCACHE|dcache_control:DCACHE_CONTROL|state
+Name state.SET_STATUS_MISS state.WRITE_BACK state.MISS state.HIT state.SET_STATUS_WRITE_BACK 
+state.HIT 0 0 0 0 0 
+state.MISS 0 0 1 1 0 
+state.WRITE_BACK 0 1 0 1 0 
+state.SET_STATUS_MISS 1 0 0 1 0 
+state.SET_STATUS_WRITE_BACK 0 0 0 1 1 
+
+State Machine - |MP3|cache_hierarchy:CACHE_HIERARCHY|arbiter:ARBITER|state
+Name state.L2D_WR_GRANT state.L2D_RD_GRANT state.L2I_RESP state.L2I_RD_GRANT state.L2D_RESP 
+state.L2I_RD_GRANT 0 0 0 0 0 
+state.L2I_RESP 0 0 1 1 0 
+state.L2D_RD_GRANT 0 1 0 1 0 
+state.L2D_WR_GRANT 1 0 0 1 0 
+state.L2D_RESP 0 0 0 1 1 
+
+State Machine - |MP3|cache_hierarchy:CACHE_HIERARCHY|icache:ICACHE|icache_control:ICACHE_CONTROL|state
+Name state.HIT state.SET_STATUS_MISS state.MISS 
+state.HIT 0 0 0 
+state.MISS 1 0 1 
+state.SET_STATUS_MISS 1 1 0 

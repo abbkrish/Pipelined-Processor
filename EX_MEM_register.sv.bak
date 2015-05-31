@@ -1,0 +1,21 @@
+/* Started by Brandon */
+
+import lc3b_types::*;
+
+module EX_MEM_register (
+
+input clk,
+input alu_out,
+input lc3b_word pc_out,
+input lc3b_word icache_rdata,
+output lc3b_imm4 imm4,
+output lc3b_imm5 imm5,
+output lc3b_offset6 offset6,
+output lc3b_offset11 offset11,
+output lc3b_reg src1,
+output lc3b_reg src2,
+output lc3b_opcode opcode,
+output lc3b_word pc_out_IF_ID
+);
+
+endmodule: EX_MEM_register

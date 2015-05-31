@@ -1,0 +1,42 @@
+module ID_EX_register (
+
+	input clk,
+	input load,
+	input br_add_out,
+	input alu_out,
+	input sr1_out,
+	input dest_ID_EX,
+    output lc3b_word br_add_out_EX_MEM,
+	output lc3b_word alu_out_EX_MEM,
+	output	lc3b_reg dest_EX_MEM,
+	output lc3b_word mem_wdata 
+
+);
+
+lc3b_word mem_wdata_intermediate;
+lc3b_word br_add_out_intermediate;
+lc3b_word alu_out_intermediate;
+lc3b_reg dest_intermediate;
+
+
+
+initial /* do we really need this? -Brandon */
+begin
+    mem_wdata_intermediate = 16'b0;
+	br_add_out_intermediate=16'b0;
+	alu_out_intermediate=16'b0;
+	dest_intermediate=3'b0;
+end
+
+always_ff @(posedge clk)
+begin
+    if (load)
+    begin
+        mem_wdata = mem_wdata_intermediate;
+		br_add_out_EX_MEM = br_add_out_intermediate;
+		alu_out_EX_MEM = alu_out_intermediate;
+		dest_EX_MEM = dest_intermediate;
+    end
+end
+
+endmodule

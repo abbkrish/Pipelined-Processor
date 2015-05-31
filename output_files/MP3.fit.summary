@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Apr 15 18:03:32 2015
+Quartus II 32-bit Version : 13.1.4 Build 182 03/12/2014 SJ Full Version
+Revision Name : MP3
+Top-level Entity Name : MP3
+Family : Cyclone IV E
+Device : EP4CE15F23C6
+Timing Models : Final
+Total logic elements : 6,759 / 15,408 ( 44 % )
+    Total combinational functions : 4,733 / 15,408 ( 31 % )
+    Dedicated logic registers : 4,907 / 15,408 ( 32 % )
+Total registers : 4907
+Total pins : 276 / 344 ( 80 % )
+Total virtual pins : 0
+Total memory bits : 0 / 516,096 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 112 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

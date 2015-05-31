@@ -1,0 +1,131 @@
+/* Started by Brandon */
+
+import lc3b_types::*;
+
+/* Discovered this after I created the register. we'll see which parameters we need //D
+module EX_MEM_register (
+	input clk,
+	input lc3b_word br_add_out,
+	input lc3b_word alu_out,
+	input lc3b_word icache_rdata,
+	output lc3b_imm4 imm4,
+	output lc3b_imm5 imm5,
+	output lc3b_offset6 offset6,
+	output lc3b_offset11 offset11,
+	output lc3b_reg src1,
+	output lc3b_reg src2,
+	output lc3b_opcode opcode,
+	output lc3b_word pc_out_IF_ID
+);
+
+always_ff @posedge(clk)
+begin
+	if (load)
+	begin
+		
+	end
+end*/
+
+module EX_MEM_register (
+
+	input clk,
+	input load,
+	input lc3b_control_word control_word_ID_EX,
+	input lc3b_word pc_out_ID_EX,
+	output lc3b_word pc_out_EX_MEM,
+	input lc3b_offset11 offset11_ID_EX, 
+	input lc3b_offset9 offset9_ID_EX, 
+	input branch_enable,
+	input lc3b_word br_add_out,
+	input lc3b_word alu_out,
+	input lc3b_word sr1_out,
+	input lc3b_reg dest_ID_EX,
+    output lc3b_word br_add_out_EX_MEM,
+	output lc3b_word alu_out_EX_MEM,
+	output lc3b_offset11 offset11_EX_MEM, 
+	output lc3b_offset9 offset9_EX_MEM, 
+	output	lc3b_reg dest_EX_MEM,
+	output lc3b_control_word control_word_EX_MEM,
+	output lc3b_word mem_wdata 
+
+);
+
+lc3b_word mem_wdata_intermediate;
+lc3b_word br_add_out_intermediate;
+lc3b_word alu_out_intermediate;
+lc3b_reg dest_intermediate;
+lc3b_control_word  control_word_intermediate;
+lc3b_offset9 offset9_intermediate;
+lc3b_offset11 offset11_intermediate;
+lc3b_word pc_intermediate;
+
+
+initial /* do we really need this? -Brandon *///D: Yeah I don't think so
+begin
+  /*  mem_wdata = 16'b0;
+	br_add_out_EX_MEM=16'b0;
+	alu_out_EX_MEM=16'b0;
+	dest_EX_MEM=3'b0;
+	control_word_EX_MEM = 0;*/
+	 mem_wdata_intermediate = 16'b0;
+	br_add_out_intermediate=16'b0;
+	alu_out_intermediate=16'b0;
+	dest_intermediate=3'b0;
+	control_word_intermediate = 0;
+	offset9_intermediate =0;
+	offset11_intermediate = 0;
+	pc_intermediate = 0;
+
+end
+
+always_ff @(posedge clk)
+begin
+  /*  if (load)
+    begin
+        mem_wdata = sr1_out; //D :  TODO: feed in mem_rdata ??? shold be sr1_out or alu out???
+		br_add_out_EX_MEM = br_add_out;
+		alu_out_EX_MEM = alu_out;
+		dest_EX_MEM = dest_ID_EX;
+		offset9_EX_MEM = offset9_ID_EX;
+		offset11_EX_MEM = offset11_ID_EX;
+		pc_out_EX_MEM = pc_out_ID_EX;
+		control_word_EX_MEM = control_word_ID_EX;
+		if (branch_enable) 
+		begin
+			control_word_EX_MEM.pcmux_sel = 1;
+			control_word_EX_MEM.load_pc = 1;
+			control_word_EX_MEM.brmux_sel = 0;//i know default is 0 but just to emphasize that this is for branch taken
+		end
+    end*/
+	 if (load)
+    begin
+        mem_wdata_intermediate = sr1_out; //D :  TODO: feed in mem_rdata ??? shold be sr1_out or alu out???
+		br_add_out_intermediate = br_add_out;
+		alu_out_intermediate = alu_out;
+		dest_intermediate = dest_ID_EX;
+		offset9_intermediate = offset9_ID_EX;
+		offset11_intermediate = offset11_ID_EX;
+		pc_intermediate = pc_out_ID_EX;
+		control_word_intermediate = control_word_ID_EX;
+		if (branch_enable && control_word_intermediate.opcode)  
+		begin
+			control_word_intermediate.pcmux_sel = 1;
+			control_word_intermediate.load_pc = 1;
+			control_word_intermediate.brmux_sel = 0;//i know default is 0 but just to emphasize that this is for branch taken
+		end
+    end
+end
+
+always_comb
+begin
+	 mem_wdata = mem_wdata_intermediate; //D :  TODO: feed in mem_rdata ??? shold be sr1_out or alu out???
+		br_add_out_EX_MEM = br_add_out_intermediate;
+		alu_out_EX_MEM = alu_out_intermediate;
+		dest_EX_MEM = dest_intermediate;
+		offset9_EX_MEM = offset9_intermediate;
+		offset11_EX_MEM = offset11_intermediate;
+		pc_out_EX_MEM = pc_intermediate;
+		control_word_EX_MEM = control_word_intermediate;
+end
+
+endmodule: EX_MEM_register

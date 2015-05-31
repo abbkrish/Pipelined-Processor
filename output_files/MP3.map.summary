@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Apr 15 18:02:20 2015
+Quartus II 32-bit Version : 13.1.4 Build 182 03/12/2014 SJ Full Version
+Revision Name : MP3
+Top-level Entity Name : MP3
+Family : Cyclone IV E
+Total logic elements : 9,205
+    Total combinational functions : 4,733
+    Dedicated logic registers : 4,907
+Total registers : 4907
+Total pins : 276
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -1,0 +1,623 @@
+# do MP3_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying /software/altera/13.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /software/altera/13.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/lc3b_types.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package lc3b_types
+# 
+# Top level modules:
+# 	--none--
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/data_selector.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package data_selector_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module data_selector
+# 
+# Top level modules:
+# 	data_selector
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/comparator.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package comparator_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module comparator
+# 
+# Top level modules:
+# 	comparator
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/icache_control.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package icache_control_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module icache_control
+# 
+# Top level modules:
+# 	icache_control
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/dcache_control.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package dcache_control_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module dcache_control
+# 
+# Top level modules:
+# 	dcache_control
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/plus2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module plus2
+# 
+# Top level modules:
+# 	plus2
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module register
+# 
+# Top level modules:
+# 	register
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/mux8.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mux8_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mux8
+# 
+# Top level modules:
+# 	mux8
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/mux4.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mux4_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mux4
+# 
+# Top level modules:
+# 	mux4
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/mux2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mux2_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mux2
+# 
+# Top level modules:
+# 	mux2
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/addr_splitter.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package addr_splitter_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module addr_splitter
+# 
+# Top level modules:
+# 	addr_splitter
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/word_replacer.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# ** Warning: /home/roros2/ece411/dat-cache/word_replacer.sv(51): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling package word_replacer_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module word_replacer
+# ** Warning: /home/roros2/ece411/dat-cache/word_replacer.sv(51): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
+# Top level modules:
+# 	word_replacer
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/cache_hierarchy.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cache_hierarchy_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cache_hierarchy
+# 
+# Top level modules:
+# 	cache_hierarchy
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/icache_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package icache_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module icache_datapath
+# 
+# Top level modules:
+# 	icache_datapath
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/dcache_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package dcache_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module dcache_datapath
+# 
+# Top level modules:
+# 	dcache_datapath
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/arbiter.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package arbiter_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module arbiter
+# 
+# Top level modules:
+# 	arbiter
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/shift.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package shift_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module shift
+# 
+# Top level modules:
+# 	shift
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/cccomp.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cccomp_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cccomp
+# 
+# Top level modules:
+# 	cccomp
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/EX_MEM_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package EX_MEM_register_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module EX_MEM_register
+# 
+# Top level modules:
+# 	EX_MEM_register
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/branchAdder.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package branchAdder_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module branchAdder
+# 
+# Top level modules:
+# 	branchAdder
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/regfile.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package regfile_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/signextend.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package signextend_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module signextend
+# 
+# Top level modules:
+# 	signextend
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/gencc.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package gencc_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module gencc
+# 
+# Top level modules:
+# 	gencc
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/array.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package array_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module array
+# 
+# Top level modules:
+# 	array
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/alu.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package alu_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/adj.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package adj_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module adj
+# 
+# Top level modules:
+# 	adj
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/MP3.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package MP3_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module MP3
+# 
+# Top level modules:
+# 	MP3
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/pipeline_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package pipeline_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module pipeline_datapath
+# 
+# Top level modules:
+# 	pipeline_datapath
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/IF_ID_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package IF_ID_register_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module IF_ID_register
+# 
+# Top level modules:
+# 	IF_ID_register
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/control_rom.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package control_rom_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module control_rom
+# 
+# Top level modules:
+# 	control_rom
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/ID_EX_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package ID_EX_register_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module ID_EX_register
+# 
+# Top level modules:
+# 	ID_EX_register
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/MEM_MEMWB_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package MEM_MEMWB_register_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module MEM_WB_register
+# 
+# Top level modules:
+# 	MEM_WB_register
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/zeroextShift.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package zeroextShift_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module zeroextShift
+# 
+# Top level modules:
+# 	zeroextShift
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/icache.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package icache_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module icache
+# 
+# Top level modules:
+# 	icache
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/dcache.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package dcache_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module dcache
+# 
+# Top level modules:
+# 	dcache
+# 
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/MP3_tb.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MP3_tb
+# 
+# Top level modules:
+# 	MP3_tb
+# vlog -sv -work work +incdir+/home/roros2/ece411/dat-cache {/home/roros2/ece411/dat-cache/physical_memory.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module physical_memory
+# 
+# Top level modules:
+# 	physical_memory
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  MP3_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps MP3_tb 
+# Loading sv_std.std
+# Loading work.MP3_tb
+# Loading work.lc3b_types
+# Loading work.MP3_sv_unit
+# Loading work.MP3
+# Loading work.pipeline_datapath_sv_unit
+# Loading work.pipeline_datapath
+# Loading work.mux8_sv_unit
+# Loading work.mux8
+# Loading work.register
+# Loading work.plus2
+# Loading work.IF_ID_register_sv_unit
+# Loading work.IF_ID_register
+# Loading work.mux4_sv_unit
+# Loading work.mux4
+# Loading work.regfile_sv_unit
+# Loading work.regfile
+# Loading work.control_rom_sv_unit
+# Loading work.control_rom
+# Loading work.gencc_sv_unit
+# Loading work.gencc
+# Loading work.cccomp_sv_unit
+# Loading work.cccomp
+# Loading work.signextend_sv_unit
+# Loading work.signextend
+# Loading work.adj_sv_unit
+# Loading work.adj
+# Loading work.zeroextShift_sv_unit
+# Loading work.zeroextShift
+# Loading work.shift_sv_unit
+# Loading work.shift
+# Loading work.ID_EX_register_sv_unit
+# Loading work.ID_EX_register
+# Loading work.alu_sv_unit
+# Loading work.alu
+# Loading work.EX_MEM_register_sv_unit
+# Loading work.EX_MEM_register
+# Loading work.branchAdder_sv_unit
+# Loading work.branchAdder
+# Loading work.MEM_MEMWB_register_sv_unit
+# Loading work.MEM_WB_register
+# Loading work.mux2_sv_unit
+# Loading work.mux2
+# Loading work.cache_hierarchy_sv_unit
+# Loading work.cache_hierarchy
+# Loading work.icache_sv_unit
+# Loading work.icache
+# Loading work.icache_datapath_sv_unit
+# Loading work.icache_datapath
+# Loading work.addr_splitter_sv_unit
+# Loading work.addr_splitter
+# Loading work.array_sv_unit
+# Loading work.array
+# Loading work.data_selector_sv_unit
+# Loading work.data_selector
+# Loading work.comparator_sv_unit
+# Loading work.comparator
+# Loading work.icache_control_sv_unit
+# Loading work.icache_control
+# Loading work.arbiter_sv_unit
+# Loading work.arbiter
+# Loading work.dcache_sv_unit
+# Loading work.dcache
+# Loading work.dcache_datapath_sv_unit
+# Loading work.dcache_datapath
+# Loading work.word_replacer_sv_unit
+# Loading work.word_replacer
+# Loading work.dcache_control_sv_unit
+# Loading work.dcache_control
+# Loading work.physical_memory
+# 
+# add wave *
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 1 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 2 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 3 times, errno 11
+# ** Error: Cannot lock WLF file: "vsim.wlf"
+#           errno 11: Resource temporarily unavailable.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: roros2  Hostname: gelib-057-07.ews.illinois.edu  ProcessID: 19490
+#           Attempting to use alternate WLF file "./wlftZBHhih".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftZBHhih
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 200 ns
+restart -f
+# Loading sv_std.std
+# Loading work.MP3_tb
+# Loading work.lc3b_types
+# Loading work.MP3_sv_unit
+# Loading work.MP3
+# Loading work.pipeline_datapath_sv_unit
+# Loading work.pipeline_datapath
+# Loading work.mux8_sv_unit
+# Loading work.mux8
+# Loading work.register
+# Loading work.plus2
+# Loading work.IF_ID_register_sv_unit
+# Loading work.IF_ID_register
+# Loading work.mux4_sv_unit
+# Loading work.mux4
+# Loading work.regfile_sv_unit
+# Loading work.regfile
+# Loading work.control_rom_sv_unit
+# Loading work.control_rom
+# Loading work.gencc_sv_unit
+# Loading work.gencc
+# Loading work.cccomp_sv_unit
+# Loading work.cccomp
+# Loading work.signextend_sv_unit
+# Loading work.signextend
+# Loading work.adj_sv_unit
+# Loading work.adj
+# Loading work.zeroextShift_sv_unit
+# Loading work.zeroextShift
+# Loading work.shift_sv_unit
+# Loading work.shift
+# Loading work.ID_EX_register_sv_unit
+# Loading work.ID_EX_register
+# Loading work.alu_sv_unit
+# Loading work.alu
+# Loading work.EX_MEM_register_sv_unit
+# Loading work.EX_MEM_register
+# Loading work.branchAdder_sv_unit
+# Loading work.branchAdder
+# Loading work.MEM_MEMWB_register_sv_unit
+# Loading work.MEM_WB_register
+# Loading work.mux2_sv_unit
+# Loading work.mux2
+# Loading work.cache_hierarchy_sv_unit
+# Loading work.cache_hierarchy
+# Loading work.icache_sv_unit
+# Loading work.icache
+# Loading work.icache_datapath_sv_unit
+# Loading work.icache_datapath
+# Loading work.addr_splitter_sv_unit
+# Loading work.addr_splitter
+# Loading work.array_sv_unit
+# Loading work.array
+# Loading work.data_selector_sv_unit
+# Loading work.data_selector
+# Loading work.comparator_sv_unit
+# Loading work.comparator
+# Loading work.icache_control_sv_unit
+# Loading work.icache_control
+# Loading work.arbiter_sv_unit
+# Loading work.arbiter
+# Loading work.dcache_sv_unit
+# Loading work.dcache
+# Loading work.dcache_datapath_sv_unit
+# Loading work.dcache_datapath
+# Loading work.word_replacer_sv_unit
+# Loading work.word_replacer
+# Loading work.dcache_control_sv_unit
+# Loading work.dcache_control
+# Loading work.physical_memory
+do stall.do
+run 17000ns
+run 10000ns
+run 10000ns
+run 10000ns
+run 10000ns
+run 10000ns
+run 10000ns
+add wave -position insertpoint  \
+sim:/MP3_tb/dut/CACHE_HIERARCHY/DCACHE/DCACHE_DATAPATH/DATA_A/data
+add wave -position insertpoint  \
+sim:/MP3_tb/dut/CACHE_HIERARCHY/DCACHE/DCACHE_DATAPATH/DATA_B/data
+restart -f
+# Loading sv_std.std
+# Loading work.MP3_tb
+# Loading work.lc3b_types
+# Loading work.MP3_sv_unit
+# Loading work.MP3
+# Loading work.pipeline_datapath_sv_unit
+# Loading work.pipeline_datapath
+# Loading work.mux8_sv_unit
+# Loading work.mux8
+# Loading work.register
+# Loading work.plus2
+# Loading work.IF_ID_register_sv_unit
+# Loading work.IF_ID_register
+# Loading work.mux4_sv_unit
+# Loading work.mux4
+# Loading work.regfile_sv_unit
+# Loading work.regfile
+# Loading work.control_rom_sv_unit
+# Loading work.control_rom
+# Loading work.gencc_sv_unit
+# Loading work.gencc
+# Loading work.cccomp_sv_unit
+# Loading work.cccomp
+# Loading work.signextend_sv_unit
+# Loading work.signextend
+# Loading work.adj_sv_unit
+# Loading work.adj
+# Loading work.zeroextShift_sv_unit
+# Loading work.zeroextShift
+# Loading work.shift_sv_unit
+# Loading work.shift
+# Loading work.ID_EX_register_sv_unit
+# Loading work.ID_EX_register
+# Loading work.alu_sv_unit
+# Loading work.alu
+# Loading work.EX_MEM_register_sv_unit
+# Loading work.EX_MEM_register
+# Loading work.branchAdder_sv_unit
+# Loading work.branchAdder
+# Loading work.MEM_MEMWB_register_sv_unit
+# Loading work.MEM_WB_register
+# Loading work.mux2_sv_unit
+# Loading work.mux2
+# Loading work.cache_hierarchy_sv_unit
+# Loading work.cache_hierarchy
+# Loading work.icache_sv_unit
+# Loading work.icache
+# Loading work.icache_datapath_sv_unit
+# Loading work.icache_datapath
+# Loading work.addr_splitter_sv_unit
+# Loading work.addr_splitter
+# Loading work.array_sv_unit
+# Loading work.array
+# Loading work.data_selector_sv_unit
+# Loading work.data_selector
+# Loading work.comparator_sv_unit
+# Loading work.comparator
+# Loading work.icache_control_sv_unit
+# Loading work.icache_control
+# Loading work.arbiter_sv_unit
+# Loading work.arbiter
+# Loading work.dcache_sv_unit
+# Loading work.dcache
+# Loading work.dcache_datapath_sv_unit
+# Loading work.dcache_datapath
+# Loading work.word_replacer_sv_unit
+# Loading work.word_replacer
+# Loading work.dcache_control_sv_unit
+# Loading work.dcache_control
+# Loading work.physical_memory
+run 20000ns
+add wave -position insertpoint  \
+sim:/MP3_tb/dut/CACHE_HIERARCHY/DCACHE/DCACHE_DATAPATH/ADDR_SPLITTER/set
+add wave -position insertpoint  \
+sim:/MP3_tb/dut/CACHE_HIERARCHY/DCACHE/DCACHE_DATAPATH/ADDR_SPLITTER/offset
+restart -f
+# Loading sv_std.std
+# Loading work.MP3_tb
+# Loading work.lc3b_types
+# Loading work.MP3_sv_unit
+# Loading work.MP3
+# Loading work.pipeline_datapath_sv_unit
+# Loading work.pipeline_datapath
+# Loading work.mux8_sv_unit
+# Loading work.mux8
+# Loading work.register
+# Loading work.plus2
+# Loading work.IF_ID_register_sv_unit
+# Loading work.IF_ID_register
+# Loading work.mux4_sv_unit
+# Loading work.mux4
+# Loading work.regfile_sv_unit
+# Loading work.regfile
+# Loading work.control_rom_sv_unit
+# Loading work.control_rom
+# Loading work.gencc_sv_unit
+# Loading work.gencc
+# Loading work.cccomp_sv_unit
+# Loading work.cccomp
+# Loading work.signextend_sv_unit
+# Loading work.signextend
+# Loading work.adj_sv_unit
+# Loading work.adj
+# Loading work.zeroextShift_sv_unit
+# Loading work.zeroextShift
+# Loading work.shift_sv_unit
+# Loading work.shift
+# Loading work.ID_EX_register_sv_unit
+# Loading work.ID_EX_register
+# Loading work.alu_sv_unit
+# Loading work.alu
+# Loading work.EX_MEM_register_sv_unit
+# Loading work.EX_MEM_register
+# Loading work.branchAdder_sv_unit
+# Loading work.branchAdder
+# Loading work.MEM_MEMWB_register_sv_unit
+# Loading work.MEM_WB_register
+# Loading work.mux2_sv_unit
+# Loading work.mux2
+# Loading work.cache_hierarchy_sv_unit
+# Loading work.cache_hierarchy
+# Loading work.icache_sv_unit
+# Loading work.icache
+# Loading work.icache_datapath_sv_unit
+# Loading work.icache_datapath
+# Loading work.addr_splitter_sv_unit
+# Loading work.addr_splitter
+# Loading work.array_sv_unit
+# Loading work.array
+# Loading work.data_selector_sv_unit
+# Loading work.data_selector
+# Loading work.comparator_sv_unit
+# Loading work.comparator
+# Loading work.icache_control_sv_unit
+# Loading work.icache_control
+# Loading work.arbiter_sv_unit
+# Loading work.arbiter
+# Loading work.dcache_sv_unit
+# Loading work.dcache
+# Loading work.dcache_datapath_sv_unit
+# Loading work.dcache_datapath
+# Loading work.word_replacer_sv_unit
+# Loading work.word_replacer
+# Loading work.dcache_control_sv_unit
+# Loading work.dcache_control
+# Loading work.physical_memory
+run 17000ns
+run 20000ns
+run 20000ns

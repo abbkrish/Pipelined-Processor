@@ -1,0 +1,9 @@
+import lc3b_types::*;
+
+module ID_EX_register (
+
+	input clk,
+	input lc3b_word pc_out,
+	
+
+)

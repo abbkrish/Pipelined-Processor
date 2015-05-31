@@ -1,0 +1,16 @@
+import lc3b_types::*;
+
+module IF_ID_register (
+
+input clk,
+input load,
+input lc3b_word pc_out,
+input lc3b_word icache_rdata,
+output lc3b_imm4 imm4,
+output lc3b_imm5 imm5,
+output lc3b_offset6 offset6
+output lc3b_reg src1,
+output lc3b_reg src2
+);
+
+

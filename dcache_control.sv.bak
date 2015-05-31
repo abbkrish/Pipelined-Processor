@@ -1,0 +1,269 @@
+import lc3b_types::*; /* Import types defined in lc3b_types.sv */
+
+module dcache_control
+(
+	input clk,
+
+	/* Datapath controls */
+	input				lru,
+	input		 		hit_A, hit_B,
+	
+	input 		 		valid_A_dataout, valid_B_dataout,
+	output logic 		valid_A_write, valid_B_write,
+	output logic 		valid_A_datain, valid_B_datain,
+
+	input		 		dirty_A_dataout, dirty_B_dataout,
+	output logic 		dirty_A_write, dirty_B_write,
+	output logic		dirty_A_datain, dirty_B_datain,
+	
+	output logic		tag_A_write, tag_B_write,
+	
+	output logic 		data_A_write, data_B_write,
+	
+	output logic		lru_datain,
+	output logic		lru_write,
+	
+	output logic		replacemux_sel,
+	
+	/* Memory signals */
+	
+	input				dcache_write,
+	input 				dcache_read,
+	output logic		dcache_resp,
+	
+	input				L2_resp,
+	output logic		L2_write,	
+	output logic		L2_read,
+	output logic		pmemaddressmux_sel
+);
+
+enum int unsigned {
+	HIT,
+	MISS,
+	WRITE_BACK,
+	SET_STATUS_MISS,
+	SET_STATUS_WRITE_BACK
+} state, next_state;
+
+always_comb
+begin : state_actions
+
+	/* Default assignments */
+	lru_datain = 1'b0;
+	lru_write = 1'b0;
+	
+	valid_A_write = 1'b0;
+	valid_B_write = 1'b0;
+	valid_A_datain = 1'b0;
+	valid_B_datain = 1'b0;
+	
+	dirty_A_write = 1'b0;
+	dirty_B_write = 1'b0;
+	dirty_A_datain = 1'b0;
+	dirty_B_datain = 1'b0;
+	
+	tag_A_write = 1'b0;
+	tag_B_write = 1'b0;
+	
+	data_A_write = 1'b0;
+	data_B_write = 1'b0;
+	
+	L2_write = 1'b0;
+	L2_read = 1'b0;
+	dcache_resp = 1'b0;
+	pmemaddressmux_sel = 1'b0;
+	
+	replacemux_sel = 1'b0;
+	
+	case(state)
+		
+		HIT: begin
+			if ((hit_A || hit_B) && (dcache_read || dcache_write))
+			begin
+				dcache_resp = 1'b1;
+			
+				if (hit_A && valid_A_dataout)
+				begin
+					pmemaddressmux_sel = 1'b0;
+
+					/* should be taken care of by hardware wire-y stuff */
+					// data_write = 1'b1;	// write dat data
+					
+					lru_write = 1'b1;
+					lru_datain = 1'b0; // wrote to A, least recent is now B
+					
+					if (dcache_write)
+					begin
+						replacemux_sel = 1'b1;
+						dirty_A_write = 1'b1;
+						dirty_A_datain = 1'b1; // A is dirty (gross!)
+					end
+				end
+				else if (hit_B && valid_B_dataout)
+				begin
+					pmemaddressmux_sel = 1'b0;
+					
+					/* should be taken care of by hardware wire-y stuff */
+					// data_write = 1'b1;	// write dat data
+					
+					lru_write = 1'b1;
+					lru_datain = 1'b1; // wrote to B, least recent is now A
+					
+					if (dcache_write)
+					begin
+						replacemux_sel = 1'b1;
+						dirty_B_write = 1'b1;
+						dirty_B_datain = 1'b1; // B is dirty (gross!)
+					end
+				end
+			end
+		end
+		
+		MISS: begin
+			pmemaddressmux_sel = 1'b0;
+			L2_read = 1'b1;			// we want to read the new and exciting stuff from physical memory
+			
+			if (lru == 1'b1)
+			begin
+				data_A_write = 1'b1;		// write the data...
+				tag_A_write = 1'b1;			// and the tag
+			end
+			
+			if (lru == 1'b0)
+			begin
+				data_B_write = 1'b1;		// write the data...
+				tag_B_write = 1'b1;			// and the tag
+			end
+		end
+		
+		WRITE_BACK: begin
+			pmemaddressmux_sel = 1'b1;	// set mux to write to address specified by tag arras and part of original memory address
+			L2_write = 1'b1;			// we want to write the dirty shit to physical memory
+		end
+		
+		SET_STATUS_WRITE_BACK: begin
+			pmemaddressmux_sel = 1'b1;
+		
+			if (lru == 1'b1) // if least recently used is A...
+			begin
+				dirty_A_write= 1'b1;
+				dirty_A_datain = 1'b0; // no longer dirty, we wrote dirty stuff to physical memory
+			end
+			else if (lru == 1'b0) // if least recently used is B...
+			begin
+				dirty_B_write = 1'b1;
+				dirty_B_datain = 1'b0; // no longer dirty, we wrote dirty stuff to physical memory
+			end
+		end
+		
+		SET_STATUS_MISS: begin
+			if (lru == 1'b1)
+			begin
+				valid_A_write = 1'b1; // set valid bit of least recently used
+				valid_A_datain = 1'b1;
+				
+				if (dcache_write)
+				begin
+					dirty_A_write = 1'b1;  // set dirty bit if it's a write
+					dirty_A_datain = 1'b1;
+				end
+				
+				//data_A_write = 1'b1;		// write the data...
+				//tag_A_write = 1'b1;			// and the tag
+			end
+			if (lru == 1'b0)
+			begin
+				valid_B_write = 1'b1; // set valid bit of least recently used
+				valid_B_datain = 1'b1;
+				
+				if (dcache_write)
+				begin
+					dirty_B_write = 1'b1;  // set dirty bit if it's a write
+					dirty_B_datain = 1'b1;
+				end
+				
+				//data_B_write = 1'b1;		// write the data...
+				//tag_B_write = 1'b1;			// and the tag
+			end
+		
+//			lru_write = 1'b1;
+//			lru_datain = !lru; // set lru to opposite
+		end
+		
+		default: /* Do nothing */;
+	endcase
+end
+	
+always_comb
+begin : next_state_logic
+	next_state = state;
+	case(state)
+	
+		HIT: begin
+			if (lru == 1'b1 && !hit_B && dcache_read)							// if we messed with B last...
+			begin
+				if (!hit_A && dirty_A_dataout == 1'b0) 	// if there's no hit on A and if the block isn't dirty...
+				begin
+					next_state = MISS;					// It's a MISS
+				end
+				// otherwise if we have a dirty block
+				else if (!hit_A && dirty_A_dataout == 1'b1 && valid_A_dataout == 1'b1)
+				begin
+					next_state = WRITE_BACK;	// we'll have to write it to memory
+				end	
+			end
+			else if (lru == 1'b0 && !hit_A && dcache_read)						// if we messed with A last...
+			begin
+				if (!hit_B && dirty_B_dataout == 1'b0)
+				begin // if there's no hit on B and if the block isn't dirty...
+					next_state = MISS;					// It's a MISS
+				end
+				// otherwise if we have a dirty block
+				else if (!hit_B && dirty_B_dataout == 1'b1 && valid_B_dataout == 1'b1)
+				begin
+					next_state = WRITE_BACK;	// we'll have to write it to memory
+				end
+			end
+			else next_state = HIT;
+		end
+		
+		MISS: begin
+			if (L2_resp)
+			begin
+				next_state = SET_STATUS_MISS;
+			end
+			else
+			begin
+				next_state = MISS;
+			end
+		end
+		
+		WRITE_BACK: begin
+			if (L2_resp) // after the data is written to physical memory
+			begin
+				next_state = SET_STATUS_WRITE_BACK;
+			end
+			else
+			begin
+				next_state = WRITE_BACK;
+			end
+		end
+	
+		SET_STATUS_MISS: begin
+			next_state = HIT;
+		end
+		
+		SET_STATUS_WRITE_BACK: begin
+			next_state = MISS;
+		end
+	
+		default: begin next_state = HIT; end
+	endcase
+end
+
+always_ff @(posedge clk)
+begin : next_state_assignment
+    state <= next_state;
+end
+
+endmodule : dcache_control

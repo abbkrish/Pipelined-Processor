@@ -1,0 +1,22 @@
+Thu Mar 19 02:11:59 CDT 2015
+Trace back: wrong # args: should be "mti_popupinternal menu w"
+    while executing
+"mti_popupinternal .main_pane.wave.wavecursorpopup_popup "
+    ("after" script)
+  <2: ::tkerror {wrong # args: should be "mti_popupinternal menu w"}
+  <1: ::bgerror {wrong # args: should be "mti_popupinternal menu w"}
+Thu Mar 19 02:47:06 CDT 2015
+Trace back: invalid command name ".main_pane.wave.saveformat.f.e"
+    while executing
+"$w insert insert $s"
+    (procedure "tk::EntryInsert" line 12)
+    invoked from within
+"tk::EntryInsert .main_pane.wave.saveformat.f.e \r"
+    invoked from within
+"if { $key ne "Tab" } {
+	     tk::CancelRepeat
+		 tk::EntryInsert .main_pane.wave.saveformat.f.e \r
+	}"
+    (command bound to event)
+  <2: ::tkerror {invalid command name ".main_pane.wave.saveformat.f.e"}
+  <1: ::bgerror {invalid command name ".main_pane.wave.saveformat.f.e"}

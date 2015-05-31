@@ -1,0 +1,92 @@
+import lc3b_types::*;
+
+/*
+	So I changed some names because they weren't
+	consistent with some of the other signals.
+	For example, in the datapath, we have:
+		
+		pc_out_IF_ID
+
+	which is fine. But then here, there was:
+	
+		control_word_IDEXOut
+		
+	I realize that it was copied directly from
+	the schematic thing we made, but I think we should
+	be a bit more careful.
+	
+		-Brandon
+*/
+
+module ID_EX_register (
+
+	input clk,
+	input load,
+	input lc3b_word pc_out_IF_ID,
+	input lc3b_word sr1_out,
+	input lc3b_word sr2_out,
+	input lc3b_word op2_out,
+	input lc3b_reg dest_IF_ID,
+	input lc3b_offset11 offset11,
+	input lc3b_control_word control_word,
+	input branch_enable,//maybe ?? //D see my comments in datapath file
+	output lc3b_word sr1_out_ID_EX,
+	output lc3b_word sr2_out_ID_EX,
+	output lc3b_reg dest_ID_EX,
+	output lc3b_word op2_out_ID_EX,
+	output lc3b_offset11 offset11_ID_EX, //D need these outputs at this stage to do branch adding
+	output lc3b_offset9 offset9_ID_EX, //D
+	output lc3b_control_word control_word_ID_EX,
+	output logic branch_enable_ID_EX,
+	output lc3b_word pc_out_ID_EX
+
+);
+lc3b_word sr1_out_int;
+lc3b_word sr2_out_int ;
+lc3b_word op2_out_int;
+logic branch_enable_int ;
+lc3b_control_word control_word_int;
+lc3b_word pc_out_int;
+lc3b_offset11 offset11_int;
+lc3b_offset9 offset9_int;
+lc3b_reg dest_int; //D Need to carry dest along the stages
+
+
+always_ff @(posedge clk)
+begin
+	/* Abishek,
+		
+		You said the control rom controls what goes in and out and stuff.
+		I wasn't sure if this load was needed.
+			-Brandon
+	*/
+	if (load)
+	begin
+		sr1_out_ID_EX = sr1_out;
+		sr2_out_ID_EX = sr2_out;
+		op2_out_ID_EX = op2_out;
+		branch_enable_ID_EX = branch_enable;
+		control_word_ID_EX = control_word;
+		pc_out_ID_EX = pc_out_IF_ID;
+		offset11_ID_EX = offset11;
+		offset9_ID_EX = offset11[8:0];
+		dest_ID_EX = dest_IF_ID; //D Need to carry dest along the stages
+	end
+	
+end
+
+always_comb
+begin
+	// not sure. Does anything go here?
+	sr1_out_ID_EX = sr1_out;
+	sr2_out_ID_EX = sr2_out;
+	op2_out_ID_EX = op2_out;
+	branch_enable_ID_EX = branch_enable;
+	control_word_ID_EX = control_word;
+	pc_out_ID_EX = pc_out_IF_ID;
+	offset11_ID_EX = offset11;
+	offset9_ID_EX = offset11[8:0];
+	dest_ID_EX = dest_IF_ID; //D Need to carry dest along the stages
+end
+
+endmodule
